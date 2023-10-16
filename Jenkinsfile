@@ -8,9 +8,20 @@ pipeline {
             }
         }
         stage('Pruebas de SAST') {
-            steps {
-                echo 'Ejecución de pruebas de SAST'
+            parallel {
+              stage('SAST simple echo') {
+                steps {
+                    echo 'Ejecución de pruebas de SAST'
+                }
+              }
+              
+              stage('Imprimir Env') {
+                  steps {
+                      echo "My path is: ${env.WORKSPACE}"
+                  }
+              }
             }
+
         }
         stage('Build') {
             steps {
