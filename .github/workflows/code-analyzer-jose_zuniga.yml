@@ -21,11 +21,9 @@ jobs:
 
       - name: Checking file exists
         id: check_file
-        env:
-          SEARCH_FILE: "${{ vars.SEARCH_FILE }}"
         uses: andstor/file-existence-action@v2
         with:
-          files: "${{ SEARCH_FILE }}"
+          files: "${{ vars.SEARCH_FILE }}"
 
       - name: Searching result
         if: steps.check_files.ouputs.files_exists == 'true
