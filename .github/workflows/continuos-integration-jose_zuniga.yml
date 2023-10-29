@@ -23,13 +23,6 @@ jobs:
           envsubst < credentials.ini.tpl > credentials.ini
           cat credentials.ini
 
-      - name: Upload Credential file
-        uses: actions/upload-artifact@v2
-        with:
-          name: credentials
-          path: credentials.ini
-          
-
       - name: Build docker image
         run: |
           docker build -t devops_ws . --tag devops_ws_:$(date +%s)
