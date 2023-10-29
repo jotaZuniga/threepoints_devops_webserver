@@ -12,9 +12,8 @@ jobs:
         run: |
           echo "Ejecucion de pruebas de SAST"
 
-      - name: Workspace path
-        run: |
-          echo "Path: ${{ github.workspace }}"
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Create credentials file
         env:
