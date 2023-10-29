@@ -26,4 +26,4 @@ jobs:
       - name: Build docker image
         uses: actions/checkout@v2
       - run: |
-          docker build -t devops_ws . --tag devops_ws_:latest
+          docker build -t devops_ws . --tag devops_ws:$(date +%s)
