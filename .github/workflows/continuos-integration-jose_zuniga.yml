@@ -12,6 +12,10 @@ jobs:
         run: |
           echo "Ejecucion de pruebas de SAST"
 
+      - name: Workspace path
+        run: |
+          echo "Path: ${{ env.WORKSPACE }}"
+
       - name: Create credentials file
         env:
           USERNAME: "${{ secrets.USERNAME }}"
