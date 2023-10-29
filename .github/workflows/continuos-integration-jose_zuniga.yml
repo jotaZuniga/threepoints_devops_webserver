@@ -24,5 +24,6 @@ jobs:
           cat credentials.ini
 
       - name: Build docker image
-        run: |
+        uses: actions/checkout@v2
+      - run: |
           docker build -t devops_ws . --tag devops_ws_:latest
