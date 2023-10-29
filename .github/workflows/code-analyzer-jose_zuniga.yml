@@ -26,6 +26,6 @@ jobs:
           files: "${{ vars.SEARCH_FILE }}"
 
       - name: Searching result
-        if: steps.check_file.ouputs.files_exists == true
+        if: steps.check_file.ouputs.files_exists != true
         run: |
-          echo "Permitiendo Pull Request"
+          echo "Build fallida. Impidiendo Pull Request"
