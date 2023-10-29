@@ -1,0 +1,21 @@
+name: practica-3-jose-zuniga-ga
+run-name: ${{ github.actor }} has created this action for his fullstack Master
+on:
+  push:
+    branches:
+      - master
+jobs:
+  basic-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pruebas de SAST
+        run: echo "Ejecucion de pruebas de SAST"
+
+      - name: Create credentials file
+        env:
+          USERNAME: "${{ secrets.USERNAME }}"
+          PASSWORD: "${{ secrets.PASSWORD }}"
+        run: envsubst < credentials.ini.tpl > credentials.ini
+
+      - name: Build docker image
+        run: docker build -t devops_ws . --tag devops_ws_:$(date +%s)
