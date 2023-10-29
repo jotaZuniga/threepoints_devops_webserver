@@ -23,7 +23,7 @@ jobs:
         run: |
           apt-get update -q
           apt-get install -y gettext        
-          envsubst < ./credentials.ini.tpl > credentials.ini
+          envsubst < credentials.ini.tpl > credentials.ini
           cat credentials.ini
 
       - name: Upload Credential file
