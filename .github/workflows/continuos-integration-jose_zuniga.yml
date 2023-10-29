@@ -14,7 +14,7 @@ jobs:
 
       - name: Workspace path
         run: |
-          echo "Path: ${{ env.WORKSPACE }}"
+          echo "Path: ${{ github.workspace }}"
 
       - name: Create credentials file
         env:
