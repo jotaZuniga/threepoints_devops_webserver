@@ -1,0 +1,31 @@
+name: code-analizer-practica-3-ga
+run-name: ${{ github.actor }} is simulating a tool that analyze the code
+on:
+  pull_request:
+    branches:
+      - main
+      - 'feature/*'
+      - 'hotfix/*'
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Quality Gate starts
+        run: |
+          echo "Realizando analisis de SAST"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Checking file exists
+        id: check_file
+        env:
+          SEARCH_FILE: "${{ vars.SEARCH_FILE }}"
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "${{ SEARCH_FILE }}"
+
+      - name: Searching result
+        if: steps.check_files.ouputs.files_exists == 'true
+        run: |
+          echo "Permitiendo Pull Request"
