@@ -21,7 +21,17 @@ jobs:
           USERNAME: "${{ secrets.USERNAME }}"
           PASSWORD: "${{ secrets.PASSWORD }}"
         run: |
+          apt-get update -q
+          apt-get install -y gettext        
           envsubst < ./credentials.ini.tpl > credentials.ini
+          cat credentials.ini
+
+      - name: Upload Credential file
+        uses: actions/upload-artifact@v2
+        with:
+          name: credentials
+          path: credentials.ini
+          
 
       - name: Build docker image
         run: |
