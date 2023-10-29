@@ -1,6 +1,8 @@
 name: code-analizer-practica-3-ga
 run-name: ${{ github.actor }} is simulating a tool that analyze the code
 on:
+  workflow_dispatch:
+  
   pull_request:
     branches:
       - main
